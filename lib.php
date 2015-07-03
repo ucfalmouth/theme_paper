@@ -22,6 +22,67 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// Copied across from bootstrap/lib.php and function name altered where called in layouts
+function paper_bootstrap_grid($pre, $post) {
+
+    if ($pre && $post) {
+        // pre & post
+        $spre = 2; $smain = 6; $spost = 4;
+        $lpre = 2; $lmain = 6; $lpost = 4;
+        $regions = array('content' => "col-sm-$smain col-sm-push-$spre col-lg-$lmain col-lg-push-$lpre");
+        $regions['pre'] = "col-sm-$spre col-sm-pull-$smain col-lg-$lpre col-lg-pull-$lmain";
+        $regions['post'] = "col-sm-$spost col-lg-$lpost";
+    } else if ($pre && !$post) {
+        // pre only
+        $spre = 4; $smain = 8; 
+        $lpre = 4; $lmain = 8;
+        $regions = array('content' => "col-sm-$smain col-sm-push-$spre col-lg-$lmain col-lg-push-$spre");
+        $regions['pre'] = "col-sm-$spre col-sm-pull-$smain col-lg-$lpre col-lg-pull-$lmain";
+        $regions['post'] = 'empty';
+    } else if (!$pre && $post) {
+        // post only
+        $smain = 8; $spost = 4;
+        // $mmain = 6; $mpost = 4;
+        $lmain = 8; $lpost = 4;
+        $regions = array('content' => "col-sm-$smain col-lg-$lmain");
+        $regions['pre'] = 'empty';
+        $regions['post'] = "col-sm-$spost col-lg-$lpost";
+    } else if (!$pre && !$post) {
+        $regions = array('content' => 'col-md-12');
+        $regions['pre'] = 'empty';
+        $regions['post'] = 'empty';
+    }
+
+    // if ('rtl' === get_string('thisdirection', 'langconfig')) {
+    // }
+
+    return $regions;
+}
+
+
+// function paper_bootstrap_grid($hassidepre, $hassidepost) {
+
+//     if ($hassidepre && $hassidepost) {
+//         $regions = array('content' => 'col-sm-6 col-sm-push-3 col-lg-8 col-lg-push-2');
+//         $regions['pre'] = 'col-sm-3 col-sm-pull-6 col-lg-2 col-lg-pull-8';
+//         $regions['post'] = 'col-sm-3 col-lg-2';
+//     } else if ($hassidepre && !$hassidepost) {
+//         $regions = array('content' => 'col-sm-9 col-sm-push-3 col-lg-10 col-lg-push-2');
+//         $regions['pre'] = 'col-sm-3 col-sm-pull-9 col-lg-2 col-lg-pull-10';
+//         $regions['post'] = 'emtpy';
+//     } else if (!$hassidepre && $hassidepost) {
+//         $regions = array('content' => 'col-sm-9 col-lg-10');
+//         $regions['pre'] = 'empty';
+//         $regions['post'] = 'col-sm-3 col-lg-2';
+//     } else if (!$hassidepre && !$hassidepost) {
+//         $regions = array('content' => 'col-md-12');
+//         $regions['pre'] = 'empty';
+//         $regions['post'] = 'empty';
+//     }
+
+//     return $regions;
+// }
+
 function theme_paper_process_css($css, $theme) {
 
     // Set the background image for the logo.

@@ -13,3 +13,62 @@
        url('[[font:theme|glyphicons-halflings-regular.ttf]]') format('truetype'),
        url('[[font:theme|glyphicons-halflings-regular.svg]]') format('svg');
 }
+
+/**
+ * Override bootstrap_theme's core.less "page-layout" section
+ */
+// .has_dock {
+//     &.empty-region-side-pre.used-region-side-post #region-main,
+//     &.empty-region-side-post.used-region-side-pre #region-main {
+//         .make-sm-column(9);
+//         .make-lg-column(8);
+//     }
+// }
+// .has_dock.dir-ltr {
+//     &.empty-region-side-post.used-region-side-pre #region-main {
+//         .make-sm-column-push(9);
+//         .make-lg-column-push(8);
+//     }
+// }
+
+.dir-ltr.editing.used-region-side-post.used-region-side-pre {
+    // pre & post
+    #region-main {
+        .make-sm-column(6);
+        .make-lg-column(8);
+        .make-sm-column-push(3);
+        .make-lg-column-push(2);
+    }
+    #block-region-side-post {
+        .make-sm-column(3);
+        .make-lg-column(2);
+        min-height: 100px;
+    }
+    #block-region-side-pre {
+        .make-sm-column(3);
+        .make-lg-column(2);
+        .make-sm-column-pull(6);
+        .make-lg-column-pull(8);
+        min-height: 100px;
+    }
+}
+.has_dock {
+    &.empty-region-side-pre.used-region-side-post #region-main,
+    &.empty-region-side-post.used-region-side-pre #region-main {
+        .make-sm-column(8);
+        .make-lg-column(8);
+    }
+}
+.has_dock.dir-ltr {
+    &.empty-region-side-post.used-region-side-pre #region-main {
+        .make-sm-column-push(4);
+        .make-lg-column-push(4);
+    }
+    &.empty-region-side-post.used-region-side-pre #block-region-side-pre {
+        .make-sm-column-pull(8);
+        .make-lg-column-pull(8);
+    }
+}
+/**
+ * End - Override bootstrap_theme's core.less 
+ */
