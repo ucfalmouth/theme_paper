@@ -23,6 +23,7 @@
  */
 
 // Copied across from bootstrap/lib.php and function name altered where called in layouts
+// The column sizes here must be matched by those configured in paper.less
 function paper_bootstrap_grid($pre, $post) {
 
     if ($pre && $post) {
